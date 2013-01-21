@@ -17,7 +17,7 @@ $("#someForm").prefillForm({
     gender: 'm',
     contact_prefs: ['email', 'sms'],
     referral_source: 'stackoverflow',
-    bio: "I am the very model of a modern major general,&lt;br /$gt;I've information vegetable, animal, and mineral."
+    bio: "I am the very model of a modern major general,<br />I've information vegetable, animal, and mineral."
   }
 });
 ```
