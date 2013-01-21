@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset='UTF-8' />
+      <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+      
+      <meta name='description' content='Test runner for jquery.PrefillForm plugin' />
+      <meta name='viewport' content='width=device-width, initial-scale=1' />
+      
+      <title>jQuery.prefillForm QUnit Test Runner</title>
+      
+      <link rel='stylesheet' href='lib/qunit-1.10.0.css'>
+      <script src='lib/jquery-1.7.2.min.js'></script>
+      <script src='../src/jquery.prefillForm.js'></script>
+      <script src='lib/qunit-1.10.0.js'></script>
+      <script src='qunit-tests.js'></script>
+
+      <style>
+        h1 { font-size: 12pt !important; }
+        #actions { position: absolute; top: 12px; right: 15px; }
+        #qunit-fixture.showing { position: relative; top: 0; left: 0; width: auto; height: auto; }
+        .group { margin: 0.1em 0; }
+        .group label { width: 10em; text-align: right; float: left; }
+      </style>
+  </head>
+  <body>
+    <div id='wrapper'>
+      
+      <h1 id="qunit-header">jQuery.prefillForm QUnit Test Runner</h1>
+      <div id='actions'>
+        <input id='toggleForms' type='button' value='Toggle Forms'/>
+        <input id='runTests' type='button' value='Run Selected Tests'/>
+      </div>
+      <h2 id="qunit-banner"></h2>
+      <div id="qunit-testrunner-toolbar"></div>
+      <h2 id="qunit-userAgent"></h2>
+      <ol id="qunit-tests"></ol>
+
+      <div id='qunit-fixture'>
+
+        <form id='allFieldsNoActionGet' action='' method='GET'>
+          <h3>Blank action, all Fields, GET</h3>
+          
+          <div class='group'>
+            <label for='f1_text'>Text</label>
+            <input type='text' id='f1_text' name='text' />
+          </div>
+
+          <div class='group'>
+            <label for='f1_date'>Text Date Input</label>
+            <input type='text' id='f1_date' name='date' class='date' />
+          </div>
+
+          <div class='group'>
+            <label for='f1_pass'>Password</label>
+            <input type='password' id='f1_pass' name='pass' />
+          </div>
+
+          <div class='group'>
+            <label for='f1_radio_a'>Radio</label>
+            <input type='radio' id='f1_radio_a' name='radio' value='a' /> a
+            <input type='radio' id='f1_radio_b' name='radio' value='b' /> b
+            <input type='radio' id='f1_radio_c' name='radio' value='c' /> c
+          </div>
+
+          <div class='group'>
+            <label for='f1_checkbox_a'>Checkbox</label>
+            <input type='checkbox' id='f1_checkbox_a' name='checkbox[]' value='a' /> a
+            <input type='checkbox' id='f1_checkbox_b' name='checkbox[]' value='b' /> b
+            <input type='checkbox' id='f1_checkbox_c' name='checkbox[]' value='c' /> c
+          </div>
+
+          <div class='group'>
+            <label for='f1_select_single'>Select Single</label>
+            <select id='f1_select_single' name='select_single'>
+              <option value='a'>Option a</option>
+              <option value='b'>Option b</option>
+              <option value='c'>Option c</option>
+              <option value='d'>Option d</option>
+            </select>
+          </div>
+
+          <div class='group'>
+            <label for='f1_select_multiple'>Select Multiple</label>
+            <select id='f1_select_multiple' name='select_multiple[]' multiple='multiple'>
+              <option value='a'>Option a</option>
+              <option value='b'>Option b</option>
+              <option value='c'>Option c</option>
+              <option value='d'>Option d</option>
+            </select>
+          </div>
+
+          <div class='group'>
+            <label for='f1_textarea'>Textarea</label>
+            <textarea id='f1_textarea' name='textarea'></textarea>
+          </div>
+
+          <div class='group'>
+            <label>Hidden and Buttons</label>
+            <input type='hidden' id='f1_hidden' name='hidden' />
+            <input type='button' id='f1_input_button' name='input_button' value='Input Button' />
+            <input type='submit' id='f1_submit' name='submit' />
+            <input type='reset' id='f1_reset' name='reset' />
+            <button id='f1_button' name='button'>Button Tag</button>
+          </div>
+        </form>
+
+        <form id='allFieldsNoActionPost' action='' method='POST'>
+          <h3>Blank action, all Fields, POST</h3>
+          
+          <div class='group'>
+            <label for='f2_text'>Text</label>
+            <input type='text' id='f2_text' name='text' />
+          </div>
+
+          <div class='group'>
+            <label for='f2_date'>Text Date Input</label>
+            <input type='text' id='f2_date' name='date' class='date' />
+          </div>
+
+          <div class='group'>
+            <label for='f2_pass'>Password</label>
+            <input type='password' id='f2_pass' name='pass' />
+          </div>
+
+          <div class='group'>
+            <label for='f2_radio_a'>Radio</label>
+            <input type='radio' id='f2_radio_a' name='radio' value='a' /> a
+            <input type='radio' id='f2_radio_b' name='radio' value='b' /> b
+            <input type='radio' id='f2_radio_c' name='radio' value='c' /> c
+          </div>
+
+          <div class='group'>
+            <label for='f2_checkbox_a'>Checkbox</label>
+            <input type='checkbox' id='f2_checkbox_a' name='checkbox[]' value='a' /> a
+            <input type='checkbox' id='f2_checkbox_b' name='checkbox[]' value='b' /> b
+            <input type='checkbox' id='f2_checkbox_c' name='checkbox[]' value='c' /> c
+          </div>
+
+          <div class='group'>
+            <label for='f2_select_single'>Select Single</label>
+            <select id='f2_select_single' name='select_single'>
+              <option value='a'>Option a</option>
+              <option value='b'>Option b</option>
+              <option value='c'>Option c</option>
+              <option value='d'>Option d</option>
+            </select>
+          </div>
+
+          <div class='group'>
+            <label for='f2_select_multiple'>Select Multiple</label>
+            <select id='f2_select_multiple' name='select_multiple[]' multiple='multiple'>
+              <option value='a'>Option a</option>
+              <option value='b'>Option b</option>
+              <option value='c'>Option c</option>
+              <option value='d'>Option d</option>
+            </select>
+          </div>
+
+          <div class='group'>
+            <label for='f2_textarea'>Textarea</label>
+            <textarea id='f2_textarea' name='textarea'></textarea>
+          </div>
+
+          <div class='group'>
+            <label>Hidden and Buttons</label>
+            <input type='hidden' id='f2_hidden' name='hidden' />
+            <input type='hidden' id='f2_ignore' name='MAX_FILE_SIZE' value='2000000' />
+            <input type='button' id='f2_input_button' name='input_button' value='Input Button' />
+            <input type='submit' id='f2_submit' name='submit' />
+            <input type='reset' id='f2_reset' name='reset' />
+            <button id='f2_button' name='button'>Button Tag</button>
+          </div>
+        </form>
+
+
+        <form id='pathActionNoFields' action='/test/path/' method='GET'>
+          <h3>Path action, no fields, GET</h3>
+        </form>
+
+        <form id='pathActionNoFieldsPost' action='/test/path/' method='POST'>
+          <h3>Path action, no fields, POST</h3>
+        </form>
+
+        <form id='pathIndexFileActionNoFields' action='/test/path/index.html' method='GET'>
+          <h3>Path index file action, no fields, GET</h3>
+        </form>
+
+        <form id='fileActionNoFields' action='/test/path/fake.html' method='GET'>
+          <h3>File action, no fields, GET</h3>
+        </form>
+
+        <form id='onlyFileActionNoFields' action='fake.html' method='GET'>
+          <h3>Filename only action, no fields, GET</h3>
+        </form>
+
+        <form id='onlyFileActionNoFieldsPost' action='fake.html' method='POST'>
+          <h3>Filename only action, no fields, POST</h3>
+        </form>
+
+        <form id='fileQueryActionNoFields' action='/test/path/fake.html?foo=bar' method='GET'>
+          <h3>File action with query, no fields, GET</h3>
+        </form>
+
+        <form id='hostActionNoFields' action='http://fake.com' method='GET'>
+          <h3>Host action, no fields, GET</h3>
+        </form>
+
+        <form id='rootActionNoFields' action='/' method='GET'>
+          <h3>Root directory action, no fields, GET</h3>
+        </form>
+
+        <form id='rootIndexActionNoFields' action='/index.html' method='GET'>
+          <h3>Root index file action, no fields, GET</h3>
+        </form>
+
+        <form id='rootIndexActionNoFieldsPost' action='/index.html' method='POST'>
+          <h3>Root index file action, no fields, GET</h3>
+        </form>
+
+        <form id='rootIndexQueryActionNoFields' action='/index.html?foo=bar' method='GET'>
+          <h3>Root index file with query action, no fields, GET</h3>
+        </form>
+
+        <form id='hostQueryActionNoFields' action='http://fake.com?foo=bar' method='GET'>
+          <h3>Host with query action, no fields, GET</h3>
+        </form>
+
+        <form id='hostPathActionNoFields' action='http://fake.com/test/path' method='GET'>
+          <h3>Host and path action, no fields, GET</h3>
+        </form>
+
+        <form id='hostPathIndexActionNoFields' action='http://fake.com/test/path/index.html' method='GET'>
+          <h3>Fully qualified action with index file, no fields, GET</h3>
+        </form>
+
+        <form id='hostPathFileActionNoFields' action='http://fake.com/test/path/fake.html' method='GET'>
+          <h3>Fully qualified action, no fields, GET</h3>
+        </form>
+
+        <form id='hostPathQueryActionNoFields' action='http://fake.com/test/path?foo=bar' method='GET'>
+          <h3>Host and path with query action, no fields, GET</h3>
+        </form>
+
+        <form id='externalActionNoFields' action='http://google.com?q=jquery%20prefill%20form%20plugin' method='GET'>
+          <h3>External action, no fields, GET</h3>
+        </form>
+
+      </div>
+      
+    </div>
+
+    <script>
+      QUnit.config.autostart = false;
+      $('#runTests').click(function() { QUnit.start(); });
+      $('#toggleForms').click(function() { $('#qunit-fixture').toggleClass('showing'); });
+    </script>
+  </body>
+</html>
