@@ -7,7 +7,7 @@ This is a jQuery plugin which simply pre-fills form inputs based on JSON data pa
 Basic Usage
 -----------
 
-Include the plugin, and then either in a document ready block (below) or simply at the bottom of your page, include code like the following:
+Include the plugin, and then either in a document ready block or simply at the bottom of your page, include code like the following:
 
 ```js
 $("#someForm").prefillForm({
@@ -24,10 +24,11 @@ $("#someForm").prefillForm({
 
 Note that this method will only fill the form indicated by the selection criteria, and it will always use the values you see above (not the ones submitted in the form).
 
+__Better Examples Using PHP__
 A more "real" example would be to use a server language like PHP to get the submitted values and fill the form:
 ```js
 $("#someForm").prefillForm({
-  data: eval(&lt;?= json_encode($_REQUEST) ?&gt;)
+  data: eval(<?= json_encode($_REQUEST) ?>)
 });
 ```
 
@@ -36,8 +37,8 @@ Of course, if you wanted to abstract use of the plugin to some kind of startup s
 $(document.ready(function() {
   // handles POST or GET on any form on the page that matches an action with the current location
   var p = new $.Prefiller({
-    data: eval(&lt;?= json_encode($_REQUEST) ?&gt;),
-    method: "&lt;?= $_SERVER['REQUEST_METHOD'] ?&gt;"
+    data: eval(<?= json_encode($_REQUEST) ?>),
+    method: "<?= $_SERVER['REQUEST_METHOD'] ?>"
   });
   p.doFill();
 });
@@ -46,7 +47,7 @@ $(document.ready(function() {
 And if you had some data retrieved from an Active Record class like `User`, you could pre-fill an edit form like this:
 ```js
 $("#userEditForm").prefillForm({
-  data: eval(&lt;?= $myUserObject->toJSON() ?&gt;),
+  data: eval(<?= $myUserObject->toJSON() ?>),
   dateFormat: 'Y-m-d',
   dateClasses: ['birthday'],
   ignoreNames: ['newStatus'] // maybe this should always be blank...
