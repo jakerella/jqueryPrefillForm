@@ -1,0 +1,32 @@
+{
+  "name": "prefillForm",
+  "title": "jQuery PrefillForm",
+  "description": "Simply pre-fills form inputs based on JSON data passed in, or it can find the correct form and fields to autofill.",
+  "keywords": [
+    "form",
+    "prefill",
+    "input",
+    "post",
+    "get"
+  ],
+  "version": "1.0.0",
+  "author": {
+    "name": "Jordan Kasper",
+    "email": "jquery@jordankasper.com",
+    "url": "http://jordankasper.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "homepage": "https://github.com/jakerella/jqueryPrefillForm",
+  "docs": "https://github.com/jakerella/jqueryPrefillForm",
+  "download": "https://github.com/jakerella/jqueryPrefillForm",
+  "bugs": "https://github.com/jakerella/jqueryPrefillForm/issues",
+  "demo": "http://jordankasper.com/jquery/prefill/examples.php"
+}
