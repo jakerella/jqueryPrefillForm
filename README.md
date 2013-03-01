@@ -25,7 +25,9 @@ $("#someForm").prefillForm({
 Note that this method will only fill the form indicated by the selection criteria, and it will always use the values you see above (not the ones submitted in the form).
 
 __Better Examples Using PHP__
+
 A more "real" example would be to use a server language like PHP to get the submitted values and fill the form:
+
 ```js
 $("#someForm").prefillForm({
   data: eval(<?= json_encode($_REQUEST) ?>)
@@ -33,6 +35,7 @@ $("#someForm").prefillForm({
 ```
 
 Of course, if you wanted to abstract use of the plugin to some kind of startup script, you could do this:
+
 ```js
 $(document.ready(function() {
   // handles POST or GET on any form on the page that matches an action with the current location
@@ -45,6 +48,7 @@ $(document.ready(function() {
 ```
 
 And if you had some data retrieved from an Active Record class like `User`, you could pre-fill an edit form like this:
+
 ```js
 $("#userEditForm").prefillForm({
   data: eval(<?= $myUserObject->toJSON() ?>),
@@ -84,6 +88,7 @@ Options
 * _location_: Should only be used for testing, must include valid `pathname` and `host` entries. _(default: window.location)_
 
 The following date format characters are used in the date formatter, this is a subset of the [PHP `date()`](http://php.net/manual/en/function.date.php) characters, and no character escaping is allowed:
+
 * 'Y': four digit year
 * 'm': two digit month
 * 'n': one or two digit month
