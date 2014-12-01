@@ -1,0 +1,30 @@
+{
+  "name": "jqueryPrefillForm",
+  "version": "1.0.0",
+  "description": "Simply pre-fills form inputs based on JSON data passed in, or it can find the correct form and fields to autofill.",
+  "main": "src/jquery.prefillForm.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Please run tests via QUnit in a browser\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakerella/jqueryPrefillForm.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "form",
+    "prefill",
+    "input",
+    "post",
+    "get"
+  ],
+  "author": "Jordan Kasper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakerella/jqueryPrefillForm/issues"
+  },
+  "homepage": "https://github.com/jakerella/jqueryPrefillForm"
+}
