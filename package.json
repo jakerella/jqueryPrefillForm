@@ -1,5 +1,5 @@
 {
-  "name": "jqueryPrefillForm",
+  "name": "jquery-prefill-form",
   "version": "1.0.0",
   "description": "Simply pre-fills form inputs based on JSON data passed in, or it can find the correct form and fields to autofill.",
   "main": "src/jquery.prefillForm.js",
