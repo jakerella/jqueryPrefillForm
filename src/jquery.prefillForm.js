@@ -16,6 +16,11 @@
  *   https://github.com/jakerella/jqueryPrefillForm
  * 
  */
+ 
+ /*
+ Theory Georgiou, Edit 10/15/2018: Moded this script to also fill html of any element with a name attribute.
+ */
+ 
 
 ;(function($) {
 
@@ -268,8 +273,11 @@
         } else if (i.is('select')) {
           t.fillSelect(i, d[n]);
 
-        } else {
+        } else if (i.is('textarea') || i.is('input')) {
           t.fillText(i, d[n]);
+
+        } else {
+          t.fillOther(i, d[n]);
         }
 
         fields.push([i, d[n]]);
@@ -349,6 +357,33 @@
           // "normal" text inputs & textareas
           if (!!this.convertBrToNewLine && i.is('textarea')) { v = v.replace(/\<br\s?\/?\>/g, "\n"); }
           i.val(v);
+        }
+      }
+      return [i, v];
+    },
+    
+    fillOther: function(i, v) {
+      if (v && v.length) {
+        // date field handling
+        if (this.dateClassString && i.is(this.dateClassString)) {
+          // date input
+          var d = null;
+          if ($.isFunction(this.dateParser)) {
+            d = this.dateParser(v);
+          }
+          
+          if (d instanceof Date) {
+            if ($.isFunction(this.dateFormatter)) {
+              i.html(this.dateFormatter(d, this.dateFormat));
+            }
+          } else {
+            i.html(v);
+          }
+
+        } else {
+          // "normal" text inputs & textareas
+          if (!!this.convertBrToNewLine && i.is('textarea')) { v = v.replace(/\<br\s?\/?\>/g, "\n"); }
+          i.html(v);
         }
       }
       return [i, v];
